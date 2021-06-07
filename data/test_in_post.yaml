@@ -1,0 +1,14 @@
+tests:
+  - case:
+    http:
+      method: POST
+      path: /posts
+      headers:
+        Content-Type: application/json
+      body:
+        title: foo
+        body: bar
+        userId: 1
+    expected:
+      response:
+        title: foo
