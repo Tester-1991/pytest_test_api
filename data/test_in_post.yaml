@@ -1,5 +1,5 @@
 tests:
-  - case:
+  - case: 验证响应中title和body与请求中的参数一致
     http:
       method: POST
       path: /posts
@@ -12,3 +12,5 @@ tests:
     expected:
       response:
         title: foo
+        body: bar
+        userId: 1
