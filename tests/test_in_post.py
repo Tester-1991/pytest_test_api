@@ -10,9 +10,12 @@ import requests
 
 from utils.yaml_util import YamlUtil
 
+cases, list_params = YamlUtil().get_test_data("./data/test_in_post.yaml")
+
 
 class TestInPost(object):
 
+    @pytest.mark.skip("")
     def test_in_post(self):
         host = 'http://jsonplaceholder.typicode.com'
         path = '/posts'
@@ -33,6 +36,7 @@ class TestInPost(object):
         assert response["title"] == body["title"]
         assert response["body"] == body["body"]
 
+    @pytest.mark.skip("")
     def test_in_post2(self):
         host = 'http://jsonplaceholder.typicode.com'
         request_data = YamlUtil().read("../data/test_in_post.yaml")
@@ -47,3 +51,9 @@ class TestInPost(object):
         assert response["userId"] == body["userId"]
         assert response["title"] == body["title"]
         assert response["body"] == body["body"]
+
+    @pytest.mark.parametrize("case,http,expected", list_params, ids=cases)
+    def test_in_post3(self, case, http, expected):
+        # print(case)
+        print(http)
+        print(expected)
